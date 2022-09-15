@@ -3,9 +3,9 @@ const os = require("os");
 const fs = require("fs");
 const hostName = os.hostname();
 
-const KeyApi = "Qc76OXcZpe99-mIurz68Vfbz503zFOLG0QrrrTKL";
-const Email = "luizfcunhaalves@gmail.com";
-var zone_identifier = "a017b1c7f31c4935dfb1c1de35e69611";
+const KeyApi = "2arUmLM-cSCFe_r20sUjFvqg_QC76R0qcLYxAY0R";
+const Email = "lorraynemachadoreis@outlook.com";
+var zone_identifier = "1fed71db292f38aba8ab8044d1a88688";
 var dkim;
 (async function () {
   console.log(hostName);
