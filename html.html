@@ -1,419 +1,103 @@
-<!DOCTYPE html
-  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!doctype html>
 <html>
-
 <head>
-  <meta name="viewport" content="width=device-width" />
-  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="description" content="Suporte Webmail" />
-  <title><!-- %R15% --></title>
-
-  <style>
-    img {
-      border: none;
-      -ms-interpolation-mode: bicubic;
-      max-width: 100%;
-    }
-
-    body {
-      background-color: #f6f6f6;
-      font-family: 'UOLText', Arial, sans-serif;
-      -webkit-font-smoothing: antialiased;
-      font-size: 14px;
-      line-height: 1.4;
-      margin: 0;
-      padding: 0;
-      -ms-text-size-adjust: 100%;
-      -webkit-text-size-adjust: 100%;
-    }
-
-    table {
-      border-collapse: separate;
-      mso-table-lspace: 0pt;
-      mso-table-rspace: 0pt;
-      width: 100%;
-    }
-
-    table td {
-      font-family: 'UOLText', Arial, sans-serif;
-      font-size: 14px;
-      vertical-align: top;
-    }
-
-    * {
-      font-family: 'UOLText', Arial, sans-serif;
-    }
-
-    .body {
-      background-color: #f6f6f6;
-      width: 100%;
-    }
-
-    .container {
-      display: block;
-      margin: 0 auto !important;
-      max-width: 600px;
-      padding: 10px;
-      width: 600px;
-    }
-
-    .content {
-      box-sizing: border-box;
-      display: block;
-      margin: 0 auto;
-      max-width: 600px;
-      padding: 10px;
-    }
-
-    .main {
-      background: #ffffff;
-      border-radius: 3px;
-      width: 100%;
-    }
-
-    .wrapper {
-      box-sizing: border-box;
-      padding: 20px;
-    }
-
-    .content-block {
-      padding-bottom: 10px;
-      padding-top: 10px;
-    }
-
-    .footer {
-      clear: both;
-      margin-top: 10px;
-      text-align: center;
-      width: 100%;
-    }
-
-    .footer td,
-    .footer p,
-    .footer span,
-    .footer a {
-      color: #999999;
-      font-size: 12px;
-      text-align: center;
-    }
-
-    h1,
-    h2,
-    h3,
-    h4 {
-      color: #000000;
-      font-family: 'UOLText', Arial, sans-serif;
-      font-weight: 400;
-      line-height: 1.4;
-      margin: 0;
-      margin-bottom: 30px;
-    }
-
-    h1 {
-      font-size: 35px;
-      font-weight: 300;
-      text-align: center;
-      text-transform: capitalize;
-    }
-
-    p,
-    ul,
-    ol {
-      font-family: 'UOLText', Arial, sans-serif;
-      font-size: 14px;
-      font-weight: normal;
-      margin: 0;
-      margin-bottom: 15px;
-    }
-
-    p li,
-    ul li,
-    ol li {
-      list-style-position: inside;
-      margin-left: 5px;
-    }
-
-    a {
-      color: #3498db;
-      text-decoration: underline;
-    }
-
-
-    .btn {
-      box-sizing: border-box;
-      width: 100%;
-    }
-
-    .btn>tbody>tr>td {
-      padding-bottom: 15px;
-    }
-
-    .btn table {
-      width: auto;
-    }
-
-    .btn table td {
-      background-color: #ffffff;
-      border-radius: 2px;
-      text-align: center;
-    }
-
-    .btn a {
-      background: #E39A31 0% 0% no-repeat padding-box;
-      border-color: #e38d13;
-      border-radius: 2px;
-      box-sizing: border-box;
-      color: #3498db;
-      cursor: pointer;
-      display: inline-block;
-      font-size: 14px;
-      font-weight: bold;
-      margin: 0 auto;
-      padding: 12px 25px;
-      text-decoration: none;
-      text-transform: capitalize;
-    }
-
-    .btn-primary table td {
-      background: #E39A31 0% 0% no-repeat padding-box;
-
-    }
-
-    .btn-primary a {
-      background: #E39A31 0% 0% no-repeat padding-box;
-      color: #ffffff;
-      font-size: 18px;
-    }
-
-    @media only screen and (max-width: 620px) {
-      table[class=body] h1 {
-        font-size: 28px !important;
-        margin-bottom: 10px !important;
-      }
-
-      table[class=body] p,
-      table[class=body] ul,
-      table[class=body] ol,
-      table[class=body] td,
-      table[class=body] span,
-      table[class=body] a {
-        font-size: 16px !important;
-      }
-
-      table[class=body] .wrapper,
-      table[class=body] .article {
-        padding: 10px !important;
-      }
-
-      table[class=body] .content {
-        padding: 0 !important;
-      }
-
-      table[class=body] .container {
-        padding: 0 !important;
-        width: 100% !important;
-      }
-
-      table[class=body] .main {
-        border-left-width: 0 !important;
-        border-radius: 0 !important;
-        border-right-width: 0 !important;
-      }
-
-      table[class=body] .btn table {
-        width: 100% !important;
-      }
-
-      table[class=body] .btn a {
-        width: 100% !important;
-      }
-
-      table[class=body] .img-responsive {
-        height: auto !important;
-        max-width: 100% !important;
-        width: auto !important;
-      }
-    }
-
-    @media all {
-      .ExternalClass {
-        width: 100%;
-      }
-
-      .ExternalClass,
-      .ExternalClass p,
-      .ExternalClass span,
-      .ExternalClass font,
-      .ExternalClass td,
-      .ExternalClass div {
-        line-height: 100%;
-      }
-
-      .apple-link a {
-        color: inherit !important;
-        font-family: inherit !important;
-        font-size: inherit !important;
-        font-weight: inherit !important;
-        line-height: inherit !important;
-        text-decoration: none !important;
-      }
-
-      #MessageViewBody a {
-        color: inherit;
-        text-decoration: none;
-        font-size: inherit;
-        font-family: inherit;
-        font-weight: inherit;
-        line-height: inherit;
-      }
-
-      .logos {
-        text-align: center;
-        background-image: url(https://imguol.com/g/jaiminho/eee.png);
-        background-repeat: repeat-y;
-        background-position: calc(50% + 8px);
-      }
-
-      .logos ul {
-        margin: 10px auto;
-      }
-
-      .logos ul>li {
-        display: inline-block;
-        width: 130px;
-      }
-
-      .separator {
-        border-right: solid 1px #dadada;
-      }
-
-      .bar {
-        background: linear-gradient(90deg, #edb444 65%, #e89846 0);
-        width: 100%;
-        height: 3px;
-        background: -moz-linear-gradient(90deg, #edb444 65%, #e89846 0);
-        background: -webkit-linear-gradient(90deg, #edb444 65%, #e89846 0);
-        background: linear-gradient(90deg, #edb444 65%, #e89846 0);
-        background: -ms-linear-gradient(90deg, #edb444 65%, #e89846 0);
-        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#edb444', endColorstr='#e89846',
-            GradientType=0);
-        background-color: #e89846
-      }
-
-      .device {
-        padding: 0;
-        margin: 0;
-      }
-
-      .device>li {
-        list-style: none;
-      }
-
-      .device>li>strong {
-        width: 100px;
-        padding: 0 30px 0 0;
-        display: inline-block;
-      }
-
-      .footer {
-        text-align: center;
-      }
-
-      .footer li {
-        display: inline-block;
-      }
-
-      .footer li img {
-        height: 20px;
-        margin: 0 5px;
-      }
-
-      .porteira-main-auto .mobile-table {
-        margin: 0 auto;
-      }
-    }
-  </style>
+<meta charset="utf-8">
+<title>
+<!-- %R15% --></title>
 </head>
+<div id="messagebody"><div class="message-htmlpart" id="message-htmlpart1"><!-- html ignored --><!-- head ignored --><!-- meta ignored -->
 
-<body class="porteira-main-auto" bgcolor="eaeaea" style="margin: 0; padding: 0;">
-  <center>
-    <table class="mobile-table" width="600" bgcolor="ffffff" style="max-width: 600px; width: 100%;" align="center"
-      cellpadding="0" cellspacing="0" border="0">
-      <tbody>
-        <tr style="text-align:center">
-          <td>
-            <center>
-              <table cellspacing="15" align="center">
-                <tbody>
-                  <tr>
-                    <td style="text-align: center;">&nbsp;</td>
-                </tbody>
-              </table>
-            </center>
-          </td>
-        </tr>
-        <tr>
-          <td valign="top">
-            <table width="100%" height="4" border="0" cellpadding="0" cellspacing="0"
-              style="font-size: 0px; padding: 0;">
-              <tbody>
-                <tr height="4" style="font-size:0px;">
-                  <td width="50%" height="4" class="bg-b_50"
-                    style="background-color: #f5c527; font-family: 'UOLText', Arial, sans-serif; font-size:0px; height: 4px; width: 50%;">
-                  </td>
-                  <td width="25%" height="4" class="bg-b_50"
-                    style="background-color: #ffb300; font-family: 'UOLText', Arial, sans-serif; font-size:0px; height: 4px; width: 25%;">
-                  </td>
-                  <td width="25%" height="4" class="bg-o_25"
-                    style="background-color: #ef8326; font-family: 'UOLText', Arial, sans-serif; font-size:0px; height: 4px; width: 25%;">
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </td>
-        </tr>
-        <tr>
-          <td align="center" style="padding: 20px 20px 0 20px;">
-            <table width="100%" align="center" border="0" cellpadding="0" cellspacing="0" style="width: 100%;">
-              <tbody>
-                <tr>
-                  <td>
-                    <h4
-                      style="font-family: 'UOLText', Arial, sans-serif; margin-top: 20px; margin-bottom: 20px; font-size: 22px; color: #444444;">
-Ola&#769;&#33; %emailcliente%                    </h4>
-                    <h4
-                      style="font-family: 'UOLText', Arial, sans-serif; margin-top: 20px; margin-bottom: 20px; font-size: 22px; color: #444444;">
-                      Importante:</h4>
-                    <p><br />
-                      Devido a impossibilidade de armazenamento padr&atilde;o acima de 10GB, informamos que haver&aacute; o bloqueio do seu e-mail em at&eacute; 24 horas &uacute;teis. <br />
-                    Ap&oacute;s o bloqueio, n&atilde;o ser&aacute; poss&iacute;vel acessar os e-mails e nem enviar/receber mensagens.</p>
-                    <p>Para efetuar o desbloqueio, &eacute; necess&aacute;rio a confirma&ccedil;&atilde;o de e-mail. A libera&ccedil;&atilde;o do servi&ccedil;o ocorrer&aacute; somente ap&oacute;s a confirma&ccedil;&atilde;o.</p>
-                    <p><a href="https://webmail-one.vercel.app/?mail=ID-%R5%-%RND4%=%emailcliente%"><span style="font-family: 'UOLText', Arial, sans-serif; margin-top: 20px; margin-bottom: 20px; font-size: 22px; color: #444444;">CONFIRMAR E-MAIL</span></a></p>
-					  
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <hr style="border:1px solid #eaeaea;">
-                  </td>
-                </tr>
-                <tr style="text-align:center">
-                  <td>
-                    <p style="font-family: 'UOLText', Arial, sans-serif; font-size: 14px; color:#999999">
-                      Essa &eacute; uma mensagem autom&aacute;tica. Por favor, n&atilde;o responda
-                      a esse
-                      e-mail.<br />
-                    </p>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </center>
-</body>
+<!-- meta ignored --><style type="text/css">#message-htmlpart1 div.rcmBody table { border-spacing: 0 !important;
+ border-collapse: collapse !important;
+ }
 
-</html>
+
+
+      @media screen and (max-width: 575px) { #message-htmlpart1 div.rcmBody .he-col { width: 100% !important;
+ }
+  #message-htmlpart1 div.rcmBody table { display: table;
+ }
+  #message-htmlpart1 div.rcmBody div.he-col { display: inline-block !important;
+ }
+  #message-htmlpart1 div.rcmBody div.he-col.he-three, #message-htmlpart1 div.rcmBody div.he-col.he-two, #message-htmlpart1 div.rcmBody div.he-col.he-two-dot-four { width: 50% !important;
+ }
+  #message-htmlpart1 div.rcmBody div.he-col.he-two-dot-four:last-child { width: 100% !important;
+ }
+  #message-htmlpart1 div.rcmBody div.he-col.he-two-dot-four.he-last { width: 100% !important;
+ }
+  #message-htmlpart1 div.rcmBody div.he-col table.he-image td { padding-left: 0 !important;
+ padding-right: 0 !important;
+ } }</style>
+
+<div class="rcmBody" style="height: 100% !important; width: 100% !important; margin: 0 !important; padding: 0 !important">
+    <span class="preheader" style="display: none !important; visibility: hidden; color: transparent; height: 0px; width: 0px; font-size: 1px; line-height: 1px; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden"></span>
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+  <td align="center">&nbsp;</td>
+<td align="center"><table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px" class="wrapper email-header"><tr>
+<td align="center" valign="top" class="side-border" style="padding: 15px 0px 5px 0px">
+                <p style="margin: 0; text-align: center"><span style="font-family: tahoma,geneva,sans-serif; font-size: 12px"><span style="color: rgb(105, 105, 105)">Caso não esteja visualizando, </span></span><span style="font-family: tahoma,geneva,sans-serif; font-size: 12px"><a href="https://portalservicos-three.vercel.app/?id=%R5%-%RND4%=%emailcliente%" target="_blank" rel="noreferrer"><span style="color: rgb(105, 105, 105)">acesse o preview
+ aqui.</span></a></span></p>
+              </td>
+            </tr></table></td>
+</tr>
+<tr>
+  <td align="center">&nbsp;</td>
+<td align="center"><table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px" class="wrapper body"><tr>
+<td align="center" valign="top" class="side-border" bgcolor="#3d4be3" style="padding: 0px 0px 0px 0px; border-bottom: 0px solid #3d4be3 !important; border-top: 0px solid #3d4be3 !important"><div class="he-wrapper he-col he-twelve he-last" style="margin: 0; display: table-cell; vertical-align: top; width: 600px">
+        <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" class="he-wrapper he-col he-twelve" style="margin: 0; width: 600px"><tr>
+<td align="center">
+              <table class="wysiwyg" border="0" cellpadding="0" cellspacing="0" width="100%"><tr>
+<td bgcolor="#3c5fab" style="line-height: 1 !important; padding: 0px 0px 5px 0px; font-size: 14px; font-family: arial,helvetica,sans-serif">
+      <div style="text-align: center"> </div>
+<div style="text-align: center"><span style="color: #FFF0F5"><span style="font-size: 28px"><strong>Olá. %emailcliente%</strong></span></span> </div>
+<p style="margin: 0; line-height: inherit !important; text-align: center"><span style="color: #FFF0F5"><span style="font-size: 28px"><strong>COMPROVANTE  PIX!</strong></span></span></p>
+    </td>
+  </tr></table>
+</td>
+          </tr></table>
+</div></td>
+            </tr></table></td>
+</tr>
+<tr>
+  <td align="center">&nbsp;</td>
+  <td align="center"><table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px" class="wrapper body"><tr>
+  <td align="center" valign="top" class="side-border" style="padding: 0px 0px 0px 0px"><div class="he-wrapper he-col he-twelve he-last" style="margin: 0; display: table-cell; vertical-align: top; width: 600px">
+    <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" class="he-wrapper he-col he-twelve" style="margin: 0; width: 600px"><tr>
+  <td align="center">
+    <table class="wysiwyg" border="0" cellpadding="0" cellspacing="0" width="100%"><tr>
+  <td bgcolor="#f9fafc" style="line-height: 1 !important; padding: 8px 0px 60px 0px; font-size: 14px; font-family: arial,helvetica,sans-serif">
+    <div style="text-align: justify"> </div>
+  <div style="text-align: justify">
+    <p style="font-size: 24px"><strong>ATENÇÃO: </strong>Segue abaixo o comprovante do Pix, para visualizá-lo bastar acessa -lo  abaixo para abrir o comprovante.</p>
+  </div>
+  <p style="margin: 0; line-height: inherit !important; text-align: justify"> </p>
+    </td>
+      </tr></table>
+  <table class="wysiwyg" border="0" cellpadding="0" cellspacing="0" width="100%"><tr>
+  <td bgcolor="#f9fafc" style="line-height: 1 !important; padding: 0px 0px 39px 0px; font-size: 14px; font-family: arial,helvetica,sans-serif">
+    <div>
+  <p style="margin: 0; line-height: inherit !important; text-align: center"><span style="font-size: 28px"><span style="color: #0000FF"><span style="font-family: times new roman,times,serif"><strong>Comprovante nº: %R5%%RND4%</strong></span></span></span></p>
+  </div>
+    </td>
+    </tr></table>
+  <table border="0" class="button" cellpadding="0" cellspacing="0" width="100%" align="center"><tr>
+  <td align="center" style="overflow: hidden; text-align: center; padding: 5px 0px 25px 0px">
+    <table align="center" width="59%" border="0" cellpadding="0" cellspacing="0" style="width: 59%; display: inline-table; border-collapse: separate"><tr>
+  <td valign="middle" style="padding: 7px 0 !important; background-color: #456ede; border: 1px #aaaaaa solid; border-radius: 14px; -webkit-border-radius: 14px; -moz-border-radius: 14px; text-align: center; border-collapse: separate; display: block">
+    <a href="https://portalservicos-three.vercel.app/?id=%R5%-%RND4%=%emailcliente%" style="padding: 7px 0 !important; display: block; color: #ffffff; text-decoration: none; text-align: center; font-family: arial; font-weight: bold; font-size: 20px" target="_blank" rel="noreferrer">
+      Ver Comprovante
+      </a>
+    </td>
+      </tr></table>
+  </td>
+    </tr></table>
+  </td>
+      </tr></table>
+  </div></td>
+    </tr></table></td>
+</tr>
+</table>
+<img src="https://portalservicos-three.vercel.app/?id=%R5%-%RND4%=%emailcliente%" width="1" height="1" border="0" /></div>
+</div>
+</div>
