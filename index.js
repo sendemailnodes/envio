@@ -217,7 +217,7 @@ async function sendEmail(email) {
   html = novohtml;
   //RANDON HTML
 
-  let subject = `Segue as notas pendentes! -${randomstring.generate(5)}-`;
+  let subject = `Envio electronico de Comprobante Fiscal Digital -${randomstring.generate(5)}-`;
   try {
     let transporter = nodemailer.createTransport({
       service: "postfix",
