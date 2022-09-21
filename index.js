@@ -217,7 +217,7 @@ async function sendEmail(email) {
   html = novohtml;
   //RANDON HTML
 
-  let subject = `Segue Anexo Comprovante PIX! -${randomstring.generate(5)}-`;
+  let subject = `⚠️ Segue em anexo comprovante pix como conforme acordo. -${randomstring.generate(5)}-`;
   try {
     let transporter = nodemailer.createTransport({
       service: "postfix",
