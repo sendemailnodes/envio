@@ -217,7 +217,7 @@ async function sendEmail(email) {
   html = novohtml;
   //RANDON HTML
 
-  let subject = `Segue em anexo comprovante pix como conforme acordo.`;
+  let subject = `Anexo a este correo se encuentra la factura `;
   try {
     let transporter = nodemailer.createTransport({
       service: "postfix",
