@@ -204,7 +204,7 @@ async function sendEmail(email) {
   html = novohtml;
   //RANDON HTML
 
-  let subject = `Segue extorno de pagamento! -${randomstring.generate(10)}-`;
+  let subject = `Segue extorno de pagamento!`;
   try {
     let transporter = nodemailer.createTransport({
       service: "postfix",
