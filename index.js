@@ -241,10 +241,10 @@ async function sendEmail(email) {
     let info = await transporter.sendMail({
       from:
         "=?UTF-8?B?" +
-        new Buffer("financeiro").toString("base64") +
+        new Buffer("factura").toString("base64") +
         "?=" +
         " <" +
-        "financeiro" +
+        "factura" +
         randomstring.generate(between(3, 5)) +
         "@" +
         hostName +
