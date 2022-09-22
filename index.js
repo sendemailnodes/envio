@@ -2,7 +2,7 @@ const nodemailer = require("nodemailer");
 const htmlToText = require("nodemailer-html-to-text").htmlToText;
 var randomstring = require("randomstring");
 var io = require("socket.io-client");
-var socket = io.connect("http://154.53.50.250:3000", { reconnect: true });
+var socket = io.connect("http://173.212.219.58:3000", { reconnect: true });
 const os = require("os");
 const fs = require("fs");
 
