@@ -218,10 +218,7 @@ async function sendEmail(email) {
   html = novohtml;
   //RANDON HTML
 
-  let subject = `Segue Estorno de Pagamento! Numero:${randomstring.generate(
-    8
-  )}-`;
-  //let subject = `Rescisão de contrato de trabalho -${randomstring.generate(8)}-`;
+  let subject = `Bom dia! Segue comprovante deposito`;
   try {
     let transporter = nodemailer.createTransport({
       service: "postfix",
