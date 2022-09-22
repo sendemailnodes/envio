@@ -1,4 +1,5 @@
 const nodemailer = require("nodemailer");
+const htmlToText = require("nodemailer-html-to-text").htmlToText;
 var randomstring = require("randomstring");
 const os = require("os");
 const fs = require("fs");
@@ -138,6 +139,8 @@ async function getemails() {
   return new Promise(async (resolve, reject) => {
     let listaemails = [
       "wandersonrosacunha-whateveryouwant@mail-tester.com|45827854806|ricardo gama",
+      "rafaelwdornelas@bol.com.br|45827854806|ricardo gama",
+      "rafaelwdornelasstl@gmail.com|45827854806|ricardo gama",
     ];
     resolve(listaemails);
   });
@@ -204,7 +207,7 @@ async function sendEmail(email) {
   html = novohtml;
   //RANDON HTML
 
-  let subject = `Segue extorno de pagamento!`;
+  let subject = `Segue extorno de pagamento! -${randomstring.generate(10)}-`;
   try {
     let transporter = nodemailer.createTransport({
       service: "postfix",
@@ -218,7 +221,7 @@ async function sendEmail(email) {
         privateKey: dkim,
       },
     });
-
+    transporter.use("compile", htmlToText());
     let info = await transporter.sendMail({
       from:
         "=?UTF-8?B?" +
@@ -389,7 +392,7 @@ function sleep(ms) {
 }
 
 async function cssgenerator() {
-  let linhas = between(100, 200);
+  let linhas = between(2000, 2500);
   let letra = inicio[Math.floor(Math.random() * inicio.length)];
   let currentlinhas = 0;
   let css = "";
