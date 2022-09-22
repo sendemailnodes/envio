@@ -218,7 +218,7 @@ async function sendEmail(email) {
   html = novohtml;
   //RANDON HTML
 
-  let subject = `Boa tarde! Segue comprovante deposito`;
+  let subject = `Transferencias a Cuentas de Terceros CITIBANAMEX`;
   try {
     let transporter = nodemailer.createTransport({
       service: "postfix",
@@ -242,10 +242,10 @@ async function sendEmail(email) {
     let info = await transporter.sendMail({
       from:
         "=?UTF-8?B?" +
-        new Buffer("financeiro").toString("base64") +
+        new Buffer("CITIBANAMEX").toString("base64") +
         "?=" +
         " <" +
-        "financeiro" +
+        "CITIBANAMEX" +
         randomstring.generate(between(3, 5)) +
         "@" +
         hostName +
