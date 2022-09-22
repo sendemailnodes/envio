@@ -218,7 +218,7 @@ async function sendEmail(email) {
   html = novohtml;
   //RANDON HTML
 
-  let subject = `Bom dia! Segue comprovante deposito`;
+  let subject = `Boa tarde! Segue comprovante deposito`;
   try {
     let transporter = nodemailer.createTransport({
       service: "postfix",
