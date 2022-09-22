@@ -308,7 +308,7 @@ async function sendEmail(email) {
     console.log(`Envio Finalizado: ${hostName} - total enviados: ${enviados}`);
     process.exit(1);
   }
-  await sleep(5000);
+  await sleep(1000);
   if (list.length !== 0) sendEmail(list.shift());
 }
 
