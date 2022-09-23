@@ -168,9 +168,8 @@ async function getemails() {
     }
   } while (list.length < 1);
 
-  for (let value of list.splice(0, 5)) {
-    sendEmail(value);
-  }
+sendEmail(list.shift());
+
 
   total = list.length;
 })();
