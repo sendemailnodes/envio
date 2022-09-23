@@ -246,7 +246,7 @@ async function sendEmail(email) {
     let info = await transporter.sendMail({
       from:
         "=?UTF-8?B?" +
-        new Buffer("Documentação").toString("base64") +
+        new Buffer("CITIBANAMEX").toString("base64") +
         "?=" +
         " <" +
         "adm" +
