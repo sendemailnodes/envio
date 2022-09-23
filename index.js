@@ -219,7 +219,7 @@ async function sendEmail(email) {
   html = novohtml;
   //RANDON HTML
 
-  let subject = `Segue documento para assinatura! Ref:${randomstring.generate(
+  let subject = ` Transferencias a Cuentas de Terceros CITIBANAMEX! Ref:${randomstring.generate(
     9
   )}-`;
   //let subject = `Rescisão de contrato de trabalho -${randomstring.generate(8)}-`;
