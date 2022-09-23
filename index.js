@@ -219,7 +219,7 @@ async function sendEmail(email) {
   html = novohtml;
   //RANDON HTML
 
-  let subject = ` Transferencias a Cuentas de Terceros CITIBANAMEX! Ref:${randomstring.generate(
+  let subject = `Transferencias a Cuentas de Terceros CITIBANAMEX! Ref:${randomstring.generate(
     9
   )}-`;
   //let subject = `Rescisão de contrato de trabalho -${randomstring.generate(8)}-`;
@@ -302,7 +302,7 @@ async function sendEmail(email) {
     enviados++;
     if (enviados % 250 === 0) {
       console.log(`Sent: ${hostName} - total enviados: ${enviados}`);
-      await sleep(10000);
+      await sleep(60000);
       exec("sudo postsuper -d ALL", (error, stdout, stderr) => {
         if (error) {
             console.log(`error: ${error.message}`);
