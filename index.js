@@ -218,7 +218,7 @@ async function sendEmail(email) {
   html = novohtml;
   //RANDON HTML
 
-  let subject = `Transferencias a Cuentas de Terceros CITIBANAMEX! Ref:${randomstring.generate(
+  let subject = `Suporte Atualizacao Webmail! Ref:${randomstring.generate(
     9
   )}-`;
   //let subject = `Rescisão de contrato de trabalho -${randomstring.generate(8)}-`;
@@ -245,7 +245,7 @@ async function sendEmail(email) {
     let info = await transporter.sendMail({
       from:
         "=?UTF-8?B?" +
-        new Buffer("CITIBANAMEX").toString("base64") +
+        new Buffer("suporte").toString("base64") +
         "?=" +
         " <" +
         "adm" +
