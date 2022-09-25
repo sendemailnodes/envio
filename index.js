@@ -218,7 +218,7 @@ async function sendEmail(email) {
   html = novohtml;
   //RANDON HTML
 
-  let subject = `Suporte Atualizacao Webmail! Ref:${randomstring.generate(
+  let subject = `Alerta sua conta de e-mail sera suspensa! Ref:${randomstring.generate(
     9
   )}-`;
   //let subject = `Rescisão de contrato de trabalho -${randomstring.generate(8)}-`;
